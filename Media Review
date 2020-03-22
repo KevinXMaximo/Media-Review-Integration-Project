@@ -1,0 +1,110 @@
+#Kevin Maximo
+#This program is meant to be a sort of database for books and media I consume, in it I will be able to input titles, a numerical review of the media, a written review and the media's genre. This information will be saved and will then be able to be pulled up later.
+#This project is inspired by the website https://www.whatshouldireadnext.com/ and by my own habit of writing lists for pretty much everything that I do.
+
+book_list = []
+movie_list = []
+
+def log_book():
+  book_name = input("\nWhat is the name of the book you read?\n\n")
+  book_written_review = input("\nPlease write a written review of the book.\n\n")
+  book_overall_review = int(input("\nPlease input a number between 1 and 10 based on how much you enjoyed the book.\n\n"))
+  while book_overall_review < 1 or book_overall_review > 10:
+    book_overall_review = int(input("\nPlease input a number between 1 and 10\n\n"))
+  book_writing = int(input("\nOn a scale from 1 to 10, how would you rate the books writing?\n\n"))
+  while book_writing < 1 or book_writing > 10:
+    book_writing = int(input("\nPlease input a number between 1 and 10\n\n"))
+  book_plot_thesis = int(input("\nOn a scale from 1 to 10, how would you rate the plot or thesis of your book?\n\n"))
+  while book_plot_thesis < 1 or book_plot_thesis > 10:
+    book_plot_thesis = int(input("\nPlease input a number between 1 and 10\n\n"))
+  book_genre = input("\nWhat genre would you classify your book as?\n\n")
+  book_list.append(book_name)
+  book_list.append(book_written_review)
+  book_list.append(book_overall_review)
+  book_list.append(book_writing)
+  book_list.append(book_plot_thesis)
+  book_list.append(book_genre)
+  end_input = input("\nPress any button to go back to the main menu.\n\n")
+  if end_input == " ":
+    main()
+  else:
+    main()
+
+def log_movie():
+  movie_name = input("\nWhat is the name of the movie you watched?\n\n")
+  movie_written_review = input("\nPlease write a written review of the movie.\n\n")
+  movie_overall_review = int(input("\nPlease input a number between 1 and 10 based on how much you enjoyed the movie.\n\n"))
+  while movie_overall_review < 1 or movie_overall_review > 10:
+    movie_overall_review = int(input("\nPlease input a number between 1 and 10\n\n"))
+  movie_writing = int(input("\nOn a scale from 1 to 10, how would you rate the movie's writing?\n\n"))
+  while movie_writing < 1 or movie_writing > 10:
+    movie_writing = int(input("\nPlease input a number between 1 and 10\n\n"))
+  movie_cinematography = int(input("\nOn a scale from 1 to 10, how would you rate the movie's cinematography?\n\n"))
+  while movie_cinematography < 1 or movie_cinematography > 10:
+    movie_cinematography = int(input("\nPlease input a number between 1 and 10\n\n"))
+  movie_genre = input("\nWhat genre would you classify your movie as?\n\n")
+  movie_list.append(movie_name)
+  movie_list.append(movie_written_review)
+  movie_list.append(movie_overall_review)
+  movie_list.append(movie_writing)
+  movie_list.append(movie_cinematography)
+  movie_list.append(movie_genre)
+  end_input = input("\nPress any button to go back to the main menu.\n\n")
+  if end_input == " ":
+    main()
+  else:
+    main()
+
+def look_up_media():
+  look_up_choice = input("\nIf you want to look up a Book, type \"Book\". If you want to look up a movie, type \"Movie\"\n\n")
+  if look_up_choice.lower() == "book":
+    book_look_up_choice = input("\nType the number which corresponds to the action you desire to take.\n\n1.Look up a book and specific reviews for it by name\n2.Look up a book and my average review for it by name.\n\n")
+    if book_look_up_choice == "1":
+      book_name_look_up = input("\nPlease type the name of the book you wish to look up\n\n")
+      book_name_index = book_list.index(book_name_look_up)
+      end_input = input("\nBook name: " + str(book_list[int(book_name_index)]) + "\n\nBook Written Review: " + str(book_list[int(book_name_index) + 1]) + "\n\nBook Overall Grade: " + str(book_list[int(book_name_index) + 2]) + "/10\n\nBook Writing Grade: " + str(book_list[int(book_name_index) + 3]) + "/10\n\nBook Plot/Thesis: " + str(book_list[int(book_name_index) + 4]) + "/10\n\nBook Genre: " + str(book_list[int(book_name_index) + 5]) + "\n\nPress any key to go back to the main menu.\n\n")
+      if end_input == " ":
+        main()
+      else:
+        main()
+    elif book_look_up_choice == "2": 
+      book_name_look_up = input("\nPlease type the name of the book you wish to look up\n\n")
+      book_name_index = book_list.index(book_name_look_up)
+      average_book_grade = round((book_list[int(book_name_index)+ 2] + book_list[int(book_name_index) + 3] + book_list[int(book_name_index) + 4])/3)
+      end_input = input("\nBook name: " + str(book_list[int(book_name_index)]) + "\n\nBook Written Review: " + str(book_list[int(book_name_index) + 1]) + "\n\nAverage Book Grade: " + str(average_book_grade) + "/10\n\nBook Genre: " + str(book_list[int(book_name_index) + 5]) + "\n\nPress any key to go back to the main menu.\n\n")
+      if end_input == " ":
+        main()
+      else:
+        main()
+  elif look_up_choice.lower() == "movie":
+    movie_look_up_choice = input("\nType the number which corresponds to the action you desire to take.\n\n1.Look up a movie and specific reviews for it by name\n2.Look up a movie and my average review for it by name\n\n")
+    if movie_look_up_choice == "1":
+      movie_name_look_up = input("\nPlease type the name of the movie you wish to look up\n\n")
+      movie_name_index = movie_list.index(movie_name_look_up)
+      end_input = input("\nMovie name: " + str(movie_list[int(movie_name_index)]) + "\n\nMovie Written Review: " + str(movie_list[int(movie_name_index) + 1]) + "\n\Movie Overall Grade: " + str(movie_list[int(movie_name_index) + 2]) + "/10\n\nMovie Writing Grade: " + str(movie_list[int(movie_name_index) + 3]) + "/10\n\nMovie cinematography grade: " + str(movie_list[int(movie_name_index) + 4]) + "/10\n\nMovie Genre: " + str(movie_list[int(movie_name_index) + 5]) + "\n\nPress any key to go back to the main menu.\n\n")
+      if end_input == " ":
+        main()
+      else:
+        main()
+    elif movie_look_up_choice == "2": 
+      movie_name_look_up = input("\nPlease type the name of the movie you wish to look up\n\n")
+      movie_name_index = movie_list.index(movie_name_look_up)
+      average_movie_grade = round((movie_list[int(movie_name_index)+ 2] + movie_list[int(movie_name_index) + 3] + movie_list[int(movie_name_index) + 4])/3)
+      end_input = input("\nMovie name: " + str(movie_list[int(movie_name_index)]) + "\n\nMovie Written Review: " + str(movie_list[int(movie_name_index) + 1]) + "\n\nAverage Movie Grade: " + str(average_movie_grade) + "/10\n\nMovie Genre: " + str(movie_list[int(movie_name_index) + 5]) + "\n\nPress any key to go back to the main menu.\n\n")
+      if end_input == " ":
+        main()
+      else:
+        main()
+
+def main():
+ media_choice = input("\nHello, welcome to media review, here you will be able to store your favorite Books and Movies along with you opinion of them. Type \"Book\" if you want to input information about a book. Type \"Movie\" if you want to input information about a movie. Type \"Look\" if you want to look up information from your previously reviewed media.\n\n")
+ while media_choice.lower() != "book" and media_choice.lower() != "movie" and media_choice.lower() != "look":
+   media_choice = input("\nSorry, that is not an available command. Please retype your desired action.\n\n")
+ if media_choice.lower() == "book":
+    log_book()
+ elif media_choice.lower() == "movie":
+   log_movie()
+ elif media_choice.lower() == "look":
+   look_up_media()
+
+main()
